@@ -48,11 +48,11 @@ jobs:
             echo "Renamed file to $RANDOM_FILENAME"
       - name: push
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "wangguoqin1001@gmail.com"
+          git config --local user.name "WANG Guoqin"
           git add .
           git commit -m 'add new heatmap' || echo "nothing to commit"
           git push || echo "nothing to push"
-      - name: udpate heatmap 
+      - name: update heatmap 
         run: |
             python -u scripts/update_heatmap.py

@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import time
 import pendulum
 from notion_helper import NotionHelper
 import requests
@@ -41,7 +42,7 @@ def get_lastest():
     else:
         return ("2011-01-01", None)
 def check_exist(id):
-    os.sleep(0.5)
+    time.sleep(0.5)
     filter = {"property": "ID", "rich_text": {"equals": id}}
     response = notion_helper.query(database_id=notion_helper.mistake_database_id,filter=filter,page_size=1)
     results = response.get("results")

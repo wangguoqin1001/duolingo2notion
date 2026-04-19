@@ -173,6 +173,7 @@ class NotionHelper:
         if key in self.__cache:
             return self.__cache.get(key)
         filter = {"property": "标题", "title": {"equals": name}}
+        time.sleep(0.5)
         response = self.client.databases.query(database_id=id, filter=filter)
         if len(response.get("results")) == 0:
             parent = {"database_id": id, "type": "database_id"}
@@ -200,6 +201,7 @@ class NotionHelper:
     @retry(stop_max_attempt_number=5, wait_exponential_multiplier=2000, wait_exponential_max=10000)
     def query(self, **kwargs):
         kwargs = {k: v for k, v in kwargs.items() if v}
+        time.sleep(0.5)
         return self.client.databases.query(**kwargs)
 
     @retry(stop_max_attempt_number=3, wait_fixed=5000)
@@ -227,6 +229,7 @@ class NotionHelper:
         has_more = True
         start_cursor = None
         while has_more:
+            time.sleep(0.5)
             response = self.client.databases.query(
                 database_id=database_id,
                 filter=filter,
@@ -245,6 +248,7 @@ class NotionHelper:
         has_more = True
         start_cursor = None
         while has_more:
+            time.sleep(0.5)
             response = self.client.databases.query(
                 database_id=database_id,
                 start_cursor=start_cursor,

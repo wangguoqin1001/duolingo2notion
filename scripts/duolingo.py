@@ -42,7 +42,7 @@ def get_lastest():
         return ("2011-01-01", None)
 def check_exist(id):
     filter = {"property": "ID", "rich_text": {"equals": id}}
-    response = notion_helper.query(database_id=notion_helper.mistake_database_id,filter=filter)
+    response = notion_helper.query(database_id=notion_helper.mistake_database_id,filter=filter,page_size=1)
     results = response.get("results")
     if(len(results)>0):
         return results[0].get("id")
